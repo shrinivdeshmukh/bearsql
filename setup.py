@@ -4,13 +4,21 @@
 
 from setuptools import setup, find_packages
 
-with open('README.rst') as readme_file:
+with open('README.md') as readme_file:
     readme = readme_file.read()
 
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+requirements = [ 'coverage==5.5',
+                'duckdb==0.2.7',
+                'numpy==1.21.0',
+                'pandas==1.2.5',
+                'pyarrow==4.0.1',
+                'python-dateutil==2.8.1',
+                'pytz==2021.1',
+                'six==1.16.0'
+            ]
 
 test_requirements = [ ]
 
@@ -44,6 +52,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/shrinivdeshmukh/bearsql',
-    version='0.1.0',
+    version='0.1.0b2',
     zip_safe=False,
 )
