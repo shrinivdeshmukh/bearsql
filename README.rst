@@ -10,6 +10,10 @@ bearsql
         :target: https://bearsql.readthedocs.io/en/latest/?version=latest
         :alt: Documentation Status
 
+.. image:: https://codecov.io/gh/shrinivdeshmukh/bearsql/branch/main/graph/badge.svg?token=OBFA4ISXEM
+        :target: https://codecov.io/gh/shrinivdeshmukh/bearsql
+    
+    
 
 
 
