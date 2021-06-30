@@ -9,4 +9,4 @@ from os import getenv
 
 logger = Logging(log_level=getenv('LOG_LEVEL', 'INFO')).get_logger()
 
-from bearsql.bearsql import SqlContext as sqlcontext
+from bearsql.bearsql import SqlContext as SqlContext

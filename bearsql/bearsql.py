@@ -44,20 +44,22 @@ class SqlContext:
         return connect(self.db, read_only=False)
 
     def register_table(self, df: DataFrame, table: Optional[str] = None):
-        view = self.view if bool(self.view) else ''.join(
+        
+        view = self.view if self.view else ''.join(
             random.choice(string.ascii_lowercase) for i in range(10))
         self.view = view
         if table:
             self.table = table
         logger.info(f'Creating table {self.table}')
-        self.__conn.register(view, df)
+        self.register_view(df, view)
         self.__conn.execute(
             f'CREATE TABLE {self.table} as SELECT * FROM {view}')
         logger.info(f'Table {self.table} created')
 
     def register_view(self, df: DataFrame, view: Optional[str] = None):
-        view = self.view if bool(self.view) else ''.join(
-            random.choice(string.ascii_lowercase) for i in range(10))
+        view = view if view else self.view
+        if not view:
+            raise Exception('No view name found! Please pass view name')
         self.view = view
         self.__conn.register(self.view, df)
         logger.info(f'View {self.view} created')
@@ -80,11 +82,11 @@ class SqlContext:
     def relation(self, df: DataFrame, table: Optional[str] = None):
         logger.info(f'Creating relation from dataframe')
         rel = self.__conn.from_df(df)
-        if table:
-            self.table = table
-            rel.set_alias(self.table)
-            logger.info(
-                f'Table can now be referenced using alias {self.table}')
+        table = table if table else f'table_{random.randint(10,50)}'
+        self.table = table
+        rel.set_alias(self.table)
+        logger.info(
+            f'Table can now be referenced using alias {self.table}')
         return rel
 
     def close(self):
