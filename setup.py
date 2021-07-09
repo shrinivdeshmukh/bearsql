@@ -13,7 +13,7 @@ with open('HISTORY.rst') as history_file:
 requirements = [ 'coverage==5.5',
                 'duckdb==0.2.7',
                 'numpy==1.21.0',
-                'pandas==1.2.5',
+                'pandas==1.3.0',
                 'pyarrow==4.0.1',
                 'python-dateutil==2.8.1',
                 'pytz==2021.1',
