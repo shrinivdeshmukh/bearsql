@@ -10,7 +10,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ 'coverage==5.5',
+requirements = [ 'coverage==7.0.5',
                 'duckdb==0.2.7',
                 'numpy==1.21.0',
                 'pandas==1.3.0',
